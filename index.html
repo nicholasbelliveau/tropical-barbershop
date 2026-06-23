@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tropical Barber · Moncton, NB</title>
+  <meta name="description" content="Tropical Barber · Cuts, shaves & honest craft. Your next destination for more than just a haircut. Book online today." />
+  <link rel="canonical" href="https://tropicalbarbershop.com/" />
+  <meta property="og:title" content="Tropical Barber · Moncton, NB" />
+  <meta property="og:description" content="Cuts, shaves & honest craft. Your next destination for more than just a haircut." />
+  <meta property="og:url" content="https://tropicalbarbershop.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tropicalbarbershop.com/images/hero-bg.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Alfa+Slab+One&family=IM+Fell+English+SC&family=Sancreek&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── CSS Variables ───────────────────────────── */
+    /* Default palette: Onyx · Ivory · Burgundy · Amber */
+    :root {
+      --bone:       #efe7d0;
+      --bone-2:     #e0d4b6;
+      --forest:     #1a1a1c;   /* onyx primary dark */
+      --forest-2:   #2a2a2c;
+      --burgundy:   #6c2128;
+      --burgundy-2: #4d161b;
+      --gold:       #c4a55c;   /* aged amber */
+      --gold-2:     #9d8240;
+      --ink:        #0e0e10;
+      --ink-2:      #1c1c1e;
+
+      --f-script: 'Berkshire Swash', cursive;
+      --f-slab:   'Alfa Slab One', Georgia, serif;
+      --f-west:   'Sancreek', 'Trade Winds', serif;
+      --f-caps:   'IM Fell English SC', Georgia, serif;
+      --f-body:   'Inter', system-ui, sans-serif;
+    }
+
+    /* ─── Reset ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--f-body); background: var(--ink); color: var(--ink); overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── Utilities ───────────────────────────────── */
+    .eyebrow {
+      font-family: var(--f-body); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase;
+    }
+    .t-script { font-family: var(--f-script); font-weight: 400; }
+    .t-slab   { font-family: var(--f-slab); font-weight: 400; }
+    .t-west   { font-family: var(--f-west); font-weight: 400; }
+    .t-caps   { font-family: var(--f-caps); font-weight: 400; }
+
+    /* ─── Buttons ─────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 15px 28px;
+      font-family: var(--f-body); font-weight: 700;
+      font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+      border: 2px solid currentColor; background: transparent;
+      cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+    }
+    .btn-gold      { background: var(--gold);      color: var(--ink);  border-color: var(--gold);      }
+    .btn-bone      { background: transparent;      color: var(--bone); border-color: var(--bone);      }
+    .btn-forest    { background: var(--forest);    color: var(--bone); border-color: var(--forest);    }
+    .btn-burgundy  { background: var(--burgundy);  color: var(--bone); border-color: var(--burgundy);  }
+    .btn-gold:hover     { background: var(--gold-2); border-color: var(--gold-2); }
+    .btn-bone:hover     { background: rgba(239,231,208,0.12); }
+    .btn-forest:hover   { background: var(--forest-2); border-color: var(--forest-2); }
+    .btn-burgundy:hover { background: var(--burgundy-2); border-color: var(--burgundy-2); }
+
+    /* ─── Navigation ──────────────────────────────── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px;
+      transition: background 0.35s ease, border-color 0.35s ease;
+      border-bottom: 1px solid transparent;
+    }
+    #nav.scrolled {
+      background: rgba(26,26,28,0.97);
+      border-bottom-color: rgba(196,165,92,0.3);
+      backdrop-filter: blur(8px);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img {
+      width: 42px; height: 42px; border-radius: 50%; object-fit: cover;
+      border: 1.5px solid var(--gold);
+    }
+    .nav-logo-text { font-family: var(--f-caps); font-size: 15px; letter-spacing: 0.14em; color: var(--bone); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      font-family: var(--f-body); font-weight: 600;
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(243,234,214,0.85); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--bone); transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: var(--forest);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 36px; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a { font-family: var(--f-caps); font-size: 28px; letter-spacing: 0.1em; color: var(--bone); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      #nav { padding: 14px 20px; }
+      .nav-links, #nav .btn { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+    }
+
+    /* ─── Hero ────────────────────────────────────── */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--forest); color: var(--bone); overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: #0e0e10;
+    }
+    .hero-bg img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.32;
+      mix-blend-mode: luminosity;
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(14,14,16,0.68) 0%, rgba(14,14,16,0.58) 35%, rgba(14,14,16,0.86) 75%, rgba(10,10,12,0.97) 100%),
+        radial-gradient(ellipse at 50% 60%, rgba(108,33,40,0.12) 0%, transparent 65%);
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 120px 24px 90px;
+      max-width: 900px; width: 100%;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      color: var(--gold); letter-spacing: 0.36em; font-size: 10px;
+      font-family: var(--f-body); font-weight: 700; text-transform: uppercase;
+      text-align: center; flex-wrap: wrap; justify-content: center;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: inline-block; width: 32px; height: 1px; background: currentColor;
+    }
+    @media (max-width: 520px) {
+      .hero-eyebrow {
+        font-size: 9px; letter-spacing: 0.18em; gap: 8px;
+      }
+      .hero-eyebrow::before, .hero-eyebrow::after { width: 20px; }
+    }
+
+    /* Painted sign box */
+    .sign-box {
+      margin: 28px auto 0; border: 2.5px double var(--gold);
+      background: rgba(0,0,0,0.22); padding: 44px 52px 40px;
+      max-width: 700px; width: calc(100% - 48px); position: relative;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .sign-box::before {
+      content: ''; position: absolute; inset: 10px;
+      border: 1px solid rgba(200,155,60,0.2); pointer-events: none;
+    }
+    .sign-tropical {
+      font-family: var(--f-script);
+      font-size: clamp(56px, 8.5vw, 96px); color: var(--gold);
+      line-height: 0.88; text-shadow: 0 3px 0 rgba(0,0,0,0.45);
+      text-align: center;
+    }
+    .sign-barber {
+      font-family: var(--f-slab);
+      font-size: clamp(48px, 8vw, 112px); color: var(--bone);
+      line-height: 0.9; letter-spacing: 0.04em; margin-top: 4px;
+      text-align: center;
+    }
+    .sign-divider {
+      display: flex; align-items: center; gap: 14px; color: var(--gold);
+      width: 55%; margin: 18px auto 6px;
+    }
+    .sign-divider::before, .sign-divider::after { content: ''; flex: 1; height: 1px; background: currentColor; opacity: 0.7; }
+
+    .hero-tagline {
+      margin-top: 26px; font-family: var(--f-caps);
+      font-size: clamp(14px, 2.5vw, 17px); letter-spacing: 0.08em;
+      color: rgba(243,234,214,0.9); line-height: 1.55;
+      text-wrap: balance; max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .hero-ctas {
+      margin-top: 28px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+    }
+    .hero-cred {
+      margin-top: 50px; display: flex; align-items: center; gap: 20px; justify-content: center;
+    }
+    .hero-cred .rule { flex: 1; max-width: 80px; height: 1px; background: var(--gold); opacity: 0.4; }
+    .hero-cred-text {
+      font-family: var(--f-caps); font-size: 11px; letter-spacing: 0.2em;
+      color: rgba(243,234,214,0.68); text-align: center; line-height: 1.7;
+      text-wrap: balance;
+    }
+    @media (max-width: 520px) {
+      .hero-cred-text { font-size: 10px; letter-spacing: 0.1em; }
+      .hero-cred .rule { max-width: 40px; }
+    }
+
+    .scroll-hint {
+      position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(243,234,214,0.35); font-size: 9px; letter-spacing: 0.22em;
+      text-transform: uppercase; font-family: var(--f-body);
+      animation: bob 2.4s ease-in-out infinite;
+    }
+    @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+    /* ─── Services ────────────────────────────────── */
+    #services { background: var(--bone); color: var(--ink); padding: 90px 40px 80px; }
+    .services-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .services-title { font-family: var(--f-script); font-size: clamp(52px, 6vw, 74px); color: var(--forest); line-height: 0.9; margin-top: 6px; }
+    .services-sub { font-family: var(--f-caps); font-size: 13px; letter-spacing: 0.2em; margin-top: 8px; opacity: 0.75; }
+    .service-list { margin-top: 28px; }
+    .service-item {
+      display: grid; grid-template-columns: 1fr auto auto;
+      gap: 0 20px; align-items: baseline;
+      padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.14);
+    }
+    .service-item:first-child { border-top: 1px solid rgba(0,0,0,0.14); }
+    .svc-name  { font-family: var(--f-slab); font-size: clamp(20px, 2.5vw, 26px); }
+    .svc-dur   { font-family: var(--f-caps); font-size: 11px; letter-spacing: 0.14em; opacity: 0.6; }
+    .svc-price { font-family: var(--f-slab); font-size: clamp(18px, 2.2vw, 24px); color: var(--burgundy); }
+    .svc-desc  { grid-column: 1 / -1; font-size: 13px; line-height: 1.6; opacity: 0.72; margin-top: 5px; }
+
+    .services-note {
+      margin-top: 30px; padding: 20px 22px;
+      background: var(--bone-2); border-left: 3px solid var(--burgundy);
+    }
+    .services-note .eyebrow { color: var(--burgundy); font-size: 10px; margin-bottom: 8px; }
+    .services-note p { font-size: 13px; line-height: 1.65; opacity: 0.8; }
+    .services-cta { margin-top: 28px; }
+
+    .services-aside {}
+    .services-photo {
+      width: 100%; aspect-ratio: 3/4;
+      background: linear-gradient(145deg, #2a2a2c 0%, #1a1a1c 100%);
+      position: relative; overflow: hidden;
+    }
+    .services-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: grayscale(8%) contrast(1.06) brightness(0.92); }
+    .ph-label {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(243,234,214,0.3);
+      border: 1px dashed rgba(243,234,214,0.15); flex-direction: column; gap: 8px; text-align: center; padding: 20px;
+    }
+    .ph-label svg { opacity: 0.4; }
+
+    .story-preview { margin-top: 24px; padding: 24px 22px; background: var(--forest); color: var(--bone); }
+    .story-preview .eyebrow { color: var(--gold); margin-bottom: 10px; }
+    .story-preview h3 { font-family: var(--f-slab); font-size: clamp(20px, 2.5vw, 26px); line-height: 1.1; margin-bottom: 12px; }
+    .story-preview p { font-size: 14px; line-height: 1.7; opacity: 0.85; }
+    .story-preview .link { display: inline-block; margin-top: 14px; font-family: var(--f-body); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+
+    @media (max-width: 900px) {
+      .services-inner { grid-template-columns: 1fr; gap: 48px; }
+      .services-aside { order: -1; }
+      .services-photo { aspect-ratio: 16/9; }
+    }
+    @media (max-width: 580px) {
+      #services { padding: 70px 22px 60px; }
+      .service-item { grid-template-columns: 1fr auto; }
+      .svc-dur { display: none; }
+    }
+
+    /* ─── Quote band ──────────────────────────────── */
+    #quote {
+      background: var(--forest); color: var(--bone);
+      border-top: 3px double var(--gold); border-bottom: 3px double var(--gold);
+      padding: 52px 40px;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+    }
+    .quote-text {
+      font-family: var(--f-script); font-size: clamp(28px, 5vw, 58px);
+      color: var(--gold); line-height: 1.25;
+      display: block; text-align: center; margin: 0 auto;
+    }
+
+    /* ─── Story ───────────────────────────────────── */
+    #story { background: var(--bone); color: var(--ink); padding: 90px 40px 80px; }
+    .story-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .story-photo {
+      width: 100%; aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #1c1c1e 0%, #0a0a0c 100%);
+      position: relative; overflow: hidden;
+    }
+    .story-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: grayscale(100%) contrast(1.08) brightness(0.95); }
+
+    .story-body .eyebrow { color: var(--burgundy); }
+    .story-script { font-family: var(--f-script); font-size: clamp(42px, 5.5vw, 66px); color: var(--forest); line-height: 0.92; margin-top: 6px; }
+    .story-heading { font-family: var(--f-slab); font-size: clamp(28px, 3.5vw, 42px); line-height: 1; letter-spacing: 0.03em; margin-top: 4px; }
+    .story-body p { font-size: 15px; line-height: 1.78; margin-top: 20px; opacity: 0.85; text-wrap: pretty; hyphens: auto; }
+
+    .pull-quote {
+      margin: 28px 0; padding: 28px 32px;
+      background: var(--forest); color: var(--bone);
+      border-top: 2px double var(--gold); border-bottom: 2px double var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      min-height: 90px; text-align: center;
+    }
+    .pull-quote .t-script {
+      font-size: clamp(22px, 3vw, 30px); color: var(--gold); line-height: 1.3;
+      display: block; width: 100%; text-align: center; margin: 0 auto;
+    }
+
+    .values-list { margin-top: 26px; border-top: 1px solid rgba(0,0,0,0.15); }
+    .value-item {
+      display: grid; grid-template-columns: 130px 1fr; gap: 16px;
+      align-items: baseline; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .val-label { font-family: var(--f-slab); font-size: 17px; color: var(--burgundy); }
+    .val-desc  { font-family: var(--f-caps); font-size: 12px; letter-spacing: 0.1em; opacity: 0.75; }
+
+    @media (max-width: 900px) {
+      .story-inner { grid-template-columns: 1fr; gap: 40px; }
+      .story-photo { aspect-ratio: 4/3; }
+    }
+    @media (max-width: 580px) {
+      #story { padding: 70px 24px 60px; }
+      .story-body p { font-size: 16px; line-height: 1.75; }
+      .story-script { font-size: clamp(42px, 11vw, 60px); }
+      .story-heading { font-size: clamp(26px, 7.5vw, 38px); }
+      .value-item { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* ─── Book ────────────────────────────────────── */
+    #book { background: var(--ink); color: var(--bone); padding: 90px 40px 80px; }
+    .book-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 60px; align-items: start;
+    }
+    .book-main .eyebrow { color: var(--gold); }
+    .book-script { font-family: var(--f-script); font-size: clamp(52px, 7vw, 82px); color: var(--gold); line-height: 0.9; margin-top: 6px; }
+    .book-heading { font-family: var(--f-slab); font-size: clamp(22px, 3vw, 32px); letter-spacing: 0.04em; margin-top: 4px; }
+    .book-card { margin-top: 28px; padding: 26px 24px; border: 2px double var(--gold); background: var(--forest); }
+    .book-card p { font-size: 14px; line-height: 1.65; opacity: 0.9; margin-bottom: 18px; }
+    .book-card .btn { width: 100%; }
+    .book-link { display: block; margin-top: 14px; text-align: center; font-family: var(--f-caps); font-size: 12px; letter-spacing: 0.18em; color: rgba(243,234,214,0.65); border-bottom: 1px solid rgba(243,234,214,0.25); padding-bottom: 2px; }
+
+    .hours-col .eyebrow { color: var(--gold); margin-bottom: 14px; }
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table td { font-family: var(--f-caps); font-size: 15px; letter-spacing: 0.05em; padding: 10px 0; border-bottom: 1px solid rgba(243,234,214,0.14); }
+    .hours-table td:last-child { text-align: right; color: var(--gold); }
+    .hours-table tr:last-child td { border-bottom: none; }
+
+    .visit-col .eyebrow { color: var(--gold); margin-bottom: 14px; }
+    .visit-address { font-family: var(--f-slab); font-size: clamp(18px, 2vw, 22px); line-height: 1.3; margin-bottom: 14px; }
+    .map-wrap { margin-top: 16px; width: 100%; height: 160px; overflow: hidden; border: 1px solid rgba(200,155,60,0.25); }
+    .map-wrap iframe { width: 100%; height: 100%; border: none; filter: grayscale(1) contrast(1.1) invert(0.85) hue-rotate(170deg); opacity: 0.85; }
+
+    @media (max-width: 900px) {
+      .book-inner { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .book-main { grid-column: 1 / -1; }
+    }
+    @media (max-width: 580px) {
+      #book { padding: 70px 22px 60px; }
+      .book-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ─── Instagram ───────────────────────────────── */
+    #instagram {
+      background: var(--forest); color: var(--bone);
+      padding: 56px 40px; text-align: center;
+    }
+    .insta-inner { max-width: 600px; margin: 0 auto; }
+    .insta-divider { display: flex; align-items: center; gap: 14px; color: var(--gold); margin-bottom: 14px; }
+    .insta-divider::before, .insta-divider::after { content: ''; flex: 1; height: 1px; background: currentColor; opacity: 0.5; }
+    .insta-handle { font-family: var(--f-caps); font-size: clamp(18px, 3vw, 26px); letter-spacing: 0.12em; color: var(--gold); margin-top: 6px; }
+    .insta-sub { font-family: var(--f-body); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.65; margin-top: 16px; }
+    .insta-btn { margin-top: 22px; }
+
+    /* ─── Footer ──────────────────────────────────── */
+    footer {
+      background: var(--ink-2); color: rgba(243,234,214,0.55);
+      padding: 20px 40px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    footer span { font-family: var(--f-caps); font-size: 12px; letter-spacing: 0.18em; }
+    @media (max-width: 580px) {
+      footer { flex-direction: column; text-align: center; padding: 18px 22px; }
+      #instagram { padding: 50px 22px; }
+    }
+
+    /* ─── Global text rendering ─────────────────────── */
+    p { text-wrap: pretty; }
+    h1, h2, h3 { text-wrap: balance; }
+
+    /* ─── Scroll reveal ───────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────── -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">
+      <img src="images/logo.jpg" alt="Tropical Barber" />
+      <span class="nav-logo-text">Tropical Barber</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#story">Story</a>
+      <a href="#book">Visit</a>
+    </div>
+    <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-burgundy">Book Now →</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" class="mc">Services</a>
+    <a href="#story"    class="mc">Story</a>
+    <a href="#book"     class="mc">Visit</a>
+    <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:8px;">Book Now →</a>
+  </div>
+
+  <!-- ─── Hero ──────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-bg">
+      <img src="images/hero-bg.jpg" alt="" aria-hidden="true" />
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Est. 2026 · Moncton, New Brunswick</div>
+
+      <div class="sign-box">
+        <div class="sign-tropical">Tropical</div>
+        <div class="sign-barber">BARBER</div>
+        <div class="sign-divider">
+          <svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg>
+        </div>
+      </div>
+
+      <p class="hero-tagline">Your next destination for more than just a haircut.</p>
+
+      <div class="hero-ctas">
+        <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-burgundy">Book an Appointment →</a>
+        <a href="#services" class="btn btn-bone">See Services</a>
+      </div>
+
+      <div class="hero-cred">
+        <span class="rule"></span>
+        <p class="hero-cred-text">Cuts · Shaves · Honest Craft<br />139 Millennium&nbsp;Blvd, Moncton</p>
+        <span class="rule"></span>
+      </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+        <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="8" cy="8" r="2" fill="currentColor">
+          <animate attributeName="cy" values="7;14;7" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+      Scroll
+    </div>
+  </section>
+
+  <!-- ─── Services ──────────────────────────── -->
+  <section id="services">
+    <div class="services-inner">
+
+      <div>
+        <div class="reveal">
+          <p class="eyebrow" style="color:var(--burgundy)">The Menu</p>
+          <div class="services-title">Services</div>
+          <div class="services-sub">Cuts · Trims · Shaves</div>
+        </div>
+
+        <div class="service-list">
+          <div class="service-item reveal reveal-d1">
+            <span class="svc-name">Haircut</span>
+            <span class="svc-dur">45 min</span>
+            <span class="svc-price">TBD</span>
+            <span class="svc-desc">Wash, scissor + clipper, hot-towel finish.</span>
+          </div>
+          <div class="service-item reveal reveal-d2">
+            <span class="svc-name">Haircut &amp; Beard</span>
+            <span class="svc-dur">60 min</span>
+            <span class="svc-price">TBD</span>
+            <span class="svc-desc">The full sit-down. Cut, shape, and line-up.</span>
+          </div>
+          <div class="service-item reveal reveal-d3">
+            <span class="svc-name">Signature Haircut</span>
+            <span class="svc-dur">60 min</span>
+            <span class="svc-price">TBD</span>
+            <span class="svc-desc">Our most detailed cut. Consultation, wash, styling.</span>
+          </div>
+          <div class="service-item reveal">
+            <span class="svc-name">Electric Beard Trim</span>
+            <span class="svc-dur">20 min</span>
+            <span class="svc-price">TBD</span>
+            <span class="svc-desc">Clipper shape and line-up. Quick and clean.</span>
+          </div>
+          <div class="service-item reveal reveal-d1">
+            <span class="svc-name">Beard Trim &amp; Straight Razor Shave</span>
+            <span class="svc-dur">45 min</span>
+            <span class="svc-price">TBD</span>
+            <span class="svc-desc">Shape and trim, finished with a hot towel straight razor shave.</span>
+          </div>
+          <div class="service-item reveal reveal-d2">
+            <span class="svc-name">Face Shave</span>
+            <span class="svc-dur">30 min</span>
+            <span class="svc-price">TBD</span>
+            <span class="svc-desc">Straight razor, hot towels, aftershave.</span>
+          </div>
+          <div class="service-item reveal reveal-d3">
+            <span class="svc-name">Head Shave</span>
+            <span class="svc-dur">30 min</span>
+            <span class="svc-price">TBD</span>
+            <span class="svc-desc">Clean straight razor head shave, hot towel finish.</span>
+          </div>
+          <div class="service-item reveal">
+            <span class="svc-name">The Tropical Experience</span>
+            <span class="svc-dur">75 min</span>
+            <span class="svc-price">TBD</span>
+            <span class="svc-desc">The complete service. Cut, beard, hot towel shave, and finishing touches.</span>
+          </div>
+        </div>
+
+        <div class="services-note reveal">
+          <p class="eyebrow">A note on our craft</p>
+          <p>Simple, high-quality products chosen with care. Sensitivities? Tell us when you book.</p>
+        </div>
+        <div class="services-cta reveal">
+          <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-forest">Book an Appointment →</a>
+        </div>
+      </div>
+
+      <aside class="services-aside reveal">
+        <div class="services-photo">
+          <img src="images/shop-interior.jpg" alt="Inside Tropical Barber" />
+        </div>
+        <div class="story-preview">
+          <p class="eyebrow">The Story</p>
+          <h3>Seven years behind the chair.</h3>
+          <p>A shop built in honour of those who came before: true craftsmanship, attention to detail, longevity over trends.</p>
+          <a href="#story" class="link">Read the story →</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ─── Quote Band ─────────────────────── -->
+  <section id="quote">
+    <span class="quote-text reveal">Built to last. Not to trend.</span>
+  </section>
+
+  <!-- ─── Story ─────────────────────────── -->
+  <section id="story">
+    <div class="story-inner">
+
+      <div class="story-photo reveal">
+        <img src="images/barber-portrait.jpg" alt="The barber at work" />
+      </div>
+
+      <div class="story-body">
+        <p class="eyebrow reveal" style="color:var(--burgundy)">The Story</p>
+        <div class="story-script reveal">Seven years</div>
+        <div class="story-heading reveal">BEHIND THE CHAIR.</div>
+
+        <p class="reveal">
+          Tropical Barber is built in honour of the people who raised me,
+          my grandparents, born in the twenties and thirties. They raised me on
+          true craftsmanship, attention to detail, and the idea that things
+          should be built to last.
+        </p>
+
+        <div class="pull-quote reveal">
+          <span class="t-script">Longevity over trends.</span>
+        </div>
+
+        <p class="reveal">
+          A botanical room, a careful hand, an honest cut. A place where real
+          people can sit down and have an escape from the real world.
+        </p>
+
+        <div class="values-list reveal">
+          <div class="value-item">
+            <span class="val-label">Craftsmanship</span>
+            <span class="val-desc">Slow work, sharp tools.</span>
+          </div>
+          <div class="value-item">
+            <span class="val-label">Attention</span>
+            <span class="val-desc">Every detail, every chair.</span>
+          </div>
+          <div class="value-item">
+            <span class="val-label">Longevity</span>
+            <span class="val-desc">Built to last. Not to trend.</span>
+          </div>
+          <div class="value-item">
+            <span class="val-label">Honest Care</span>
+            <span class="val-desc">Simple, chosen with care.</span>
+          </div>
+        </div>
+
+        <div style="margin-top:30px" class="reveal">
+          <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-forest">Book an Appointment →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Book / Visit ──────────────────── -->
+  <section id="book">
+    <div class="book-inner">
+
+      <div class="book-main">
+        <p class="eyebrow reveal">Reserve a Chair</p>
+        <div class="book-script reveal">Book</div>
+        <div class="book-heading reveal">YOUR VISIT</div>
+        <div class="book-card reveal">
+          <p>We book through Resurva, quick, mobile-friendly, and easy to reschedule. Pick your service and time in minutes.</p>
+          <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-burgundy" style="width:100%;justify-content:center;">Book an Appointment ↗</a>
+          <a href="https://instagram.com/tropicalbarberco" target="_blank" rel="noopener" class="book-link">@tropicalbarberco on Instagram</a>
+        </div>
+      </div>
+
+      <div class="hours-col reveal">
+        <p class="eyebrow">Hours</p>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Tue – Fri</td><td>9 – 7</td></tr>
+            <tr><td>Saturday</td><td>9 – 4</td></tr>
+            <tr><td>Sun &amp; Mon</td><td>Closed</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="visit-col reveal">
+        <p class="eyebrow">The Shop</p>
+        <div class="visit-address">139 Millennium Blvd<br />Moncton, NB</div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2726.0!2d-64.8234!3d46.0778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ca0b9de36f8acd5%3A0x0!2s139+Millennium+Blvd%2C+Moncton%2C+NB!5e0!3m2!1sen!2sca!4v1"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Tropical Barber location">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Instagram ─────────────────────── -->
+  <section id="instagram">
+    <div class="insta-inner reveal">
+      <div class="insta-divider">
+        <svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="currentColor"/></svg>
+      </div>
+      <div class="insta-handle">@tropicalbarberco</div>
+      <p class="insta-sub">Follow us on Instagram</p>
+      <div class="insta-btn">
+        <a href="https://instagram.com/tropicalbarberco" target="_blank" rel="noopener" class="btn btn-bone">View Our Work ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ────────────────────────── -->
+  <footer>
+    <span>© Tropical Barber · Moncton, NB</span>
+    <span>@tropicalbarberco</span>
+  </footer>
+
+  <!-- ─── Scripts ───────────────────────── -->
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Hamburger
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => {
+      const open = btn.classList.toggle('open');
+      menu.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mc').forEach(a => {
+      a.addEventListener('click', () => {
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
