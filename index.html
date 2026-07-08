@@ -19,14 +19,14 @@
 
   <style>
     /* ─── CSS Variables ───────────────────────────── */
-    /* Default palette: Onyx · Ivory · Burgundy · Amber */
+    /* Default palette: Onyx · Ivory · Billiard Green · Amber */
     :root {
       --bone:       #efe7d0;
       --bone-2:     #e0d4b6;
       --forest:     #1a1a1c;   /* onyx primary dark */
       --forest-2:   #2a2a2c;
-      --burgundy:   #6c2128;
-      --burgundy-2: #4d161b;
+      --billiard:   #45584D; /* Sherwin-Williams SW 0016 "Billiard Green" */
+      --billiard-2: #303D35;
       --gold:       #c4a55c;   /* aged amber */
       --gold-2:     #9d8240;
       --ink:        #0e0e10;
@@ -68,11 +68,11 @@
     .btn-gold      { background: var(--gold);      color: var(--ink);  border-color: var(--gold);      }
     .btn-bone      { background: transparent;      color: var(--bone); border-color: var(--bone);      }
     .btn-forest    { background: var(--forest);    color: var(--bone); border-color: var(--forest);    }
-    .btn-burgundy  { background: var(--burgundy);  color: var(--bone); border-color: var(--burgundy);  }
+    .btn-billiard  { background: var(--billiard);  color: var(--bone); border-color: var(--billiard);  }
     .btn-gold:hover     { background: var(--gold-2); border-color: var(--gold-2); }
     .btn-bone:hover     { background: rgba(239,231,208,0.12); }
     .btn-forest:hover   { background: var(--forest-2); border-color: var(--forest-2); }
-    .btn-burgundy:hover { background: var(--burgundy-2); border-color: var(--burgundy-2); }
+    .btn-billiard:hover { background: var(--billiard-2); border-color: var(--billiard-2); }
 
     /* ─── Navigation ──────────────────────────────── */
     #nav {
@@ -148,7 +148,7 @@
       content: ''; position: absolute; inset: 0;
       background:
         linear-gradient(180deg, rgba(14,14,16,0.68) 0%, rgba(14,14,16,0.58) 35%, rgba(14,14,16,0.86) 75%, rgba(10,10,12,0.97) 100%),
-        radial-gradient(ellipse at 50% 60%, rgba(108,33,40,0.12) 0%, transparent 65%);
+        radial-gradient(ellipse at 50% 60%, rgba(69,88,77,0.12) 0%, transparent 65%);
     }
 
     @media (max-width: 640px) {
@@ -159,7 +159,7 @@
       .hero-bg::after {
         background:
           linear-gradient(180deg, rgba(14,14,16,0.55) 0%, rgba(14,14,16,0.48) 35%, rgba(14,14,16,0.80) 75%, rgba(10,10,12,0.95) 100%),
-          radial-gradient(ellipse at 50% 60%, rgba(108,33,40,0.12) 0%, transparent 65%);
+          radial-gradient(ellipse at 50% 60%, rgba(69,88,77,0.12) 0%, transparent 65%);
       }
     }
 
@@ -262,14 +262,14 @@
     .service-item:first-child { border-top: 1px solid rgba(0,0,0,0.14); }
     .svc-name  { font-family: var(--f-slab); font-size: clamp(20px, 2.5vw, 26px); }
     .svc-dur   { font-family: var(--f-caps); font-size: 11px; letter-spacing: 0.14em; opacity: 0.6; }
-    .svc-price { font-family: var(--f-slab); font-size: clamp(18px, 2.2vw, 24px); color: var(--burgundy); }
+    .svc-price { font-family: var(--f-slab); font-size: clamp(18px, 2.2vw, 24px); color: var(--billiard); }
     .svc-desc  { grid-column: 1 / -1; font-size: 13px; line-height: 1.6; opacity: 0.72; margin-top: 5px; }
 
     .services-note {
       margin-top: 30px; padding: 20px 22px;
-      background: var(--bone-2); border-left: 3px solid var(--burgundy);
+      background: var(--bone-2); border-left: 3px solid var(--billiard);
     }
-    .services-note .eyebrow { color: var(--burgundy); font-size: 10px; margin-bottom: 8px; }
+    .services-note .eyebrow { color: var(--billiard); font-size: 10px; margin-bottom: 8px; }
     .services-note p { font-size: 13px; line-height: 1.65; opacity: 0.8; }
     .services-cta { margin-top: 28px; }
 
@@ -331,7 +331,7 @@
     }
     .story-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 88%; filter: grayscale(100%) contrast(1.08) brightness(0.95); }
 
-    .story-body .eyebrow { color: var(--burgundy); }
+    .story-body .eyebrow { color: var(--billiard); }
     .story-script { font-family: var(--f-script); font-size: clamp(42px, 5.5vw, 66px); color: var(--forest); line-height: 0.92; margin-top: 6px; }
     .story-heading { font-family: var(--f-slab); font-size: clamp(28px, 3.5vw, 42px); line-height: 1; letter-spacing: 0.03em; margin-top: 4px; }
     .story-body p { font-size: 15px; line-height: 1.78; margin-top: 20px; opacity: 0.85; text-wrap: pretty; hyphens: auto; }
@@ -353,7 +353,7 @@
       display: grid; grid-template-columns: 130px 1fr; gap: 16px;
       align-items: baseline; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.1);
     }
-    .val-label { font-family: var(--f-slab); font-size: 17px; color: var(--burgundy); }
+    .val-label { font-family: var(--f-slab); font-size: 17px; color: var(--billiard); }
     .val-desc  { font-family: var(--f-caps); font-size: 12px; letter-spacing: 0.1em; opacity: 0.75; }
 
     @media (max-width: 900px) {
@@ -451,7 +451,7 @@
       <a href="#story">Story</a>
       <a href="#book">Visit</a>
     </div>
-    <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-burgundy">Book Now →</a>
+    <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-billiard">Book Now →</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -485,7 +485,7 @@
       <p class="hero-tagline">Your next destination for more than just a haircut.</p>
 
       <div class="hero-ctas">
-        <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-burgundy">Book an Appointment →</a>
+        <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-billiard">Book an Appointment →</a>
         <a href="#services" class="btn btn-bone">See Services</a>
       </div>
 
@@ -513,7 +513,7 @@
 
       <div>
         <div class="reveal">
-          <p class="eyebrow" style="color:var(--burgundy)">The Menu</p>
+          <p class="eyebrow" style="color:var(--billiard)">The Menu</p>
           <div class="services-title">Services</div>
           <div class="services-sub">Cuts · Trims · Shaves</div>
         </div>
@@ -607,7 +607,7 @@
       </div>
 
       <div class="story-body">
-        <p class="eyebrow reveal" style="color:var(--burgundy)">The Story</p>
+        <p class="eyebrow reveal" style="color:var(--billiard)">The Story</p>
         <div class="story-script reveal">Seven years</div>
         <div class="story-heading reveal">BEHIND THE CHAIR.</div>
 
@@ -663,7 +663,7 @@
         <div class="book-heading reveal">YOUR VISIT</div>
         <div class="book-card reveal">
           <p>We book through Resurva, quick, mobile-friendly, and easy to reschedule. Pick your service and time in minutes.</p>
-          <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-burgundy" style="width:100%;justify-content:center;">Book an Appointment ↗</a>
+          <a href="https://tropicalbarberco.resurva.com" target="_blank" rel="noopener" class="btn btn-billiard" style="width:100%;justify-content:center;">Book an Appointment ↗</a>
           <a href="https://instagram.com/tropicalbarberco" target="_blank" rel="noopener" class="book-link">@tropicalbarberco on Instagram</a>
         </div>
       </div>
